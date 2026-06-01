@@ -11,3 +11,12 @@ class ProdutoController extends Controller
         return View('produtos.index',compact('produtos'));
     }
 }
+public function store(Request $request){
+    $dados = $request->validate([
+        'nome'=>'required|min:3',
+        'preco'=>'required|numeric|min:0',
+        'estoque'=>'required|interger|min:0'
+    ]);
+    Produto::create($dados);
+    return redirect('/produtos');
+}
