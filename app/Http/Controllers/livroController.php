@@ -11,7 +11,7 @@ class LivroController extends Controller
     {
         $livros = Livro::all();
 
-        return view('livros', compact('livros'));
+        return view('livros.php', compact('livros'));
     }
 
     public function store(Request $request)

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Livros</title>
 </head>
 <body>
@@ -19,16 +18,13 @@
     <form action="/livros" method="POST">
         @csrf
 
-        <label>Título:</label>
-        <input type="text" name="titulo">
+        <input type="text" name="titulo" placeholder="Título">
         <br><br>
 
-        <label>Autor:</label>
-        <input type="text" name="autor">
+        <input type="text" name="autor" placeholder="Autor">
         <br><br>
 
-        <label>Ano de Publicação:</label>
-        <input type="number" name="ano_publicacao">
+        <input type="number" name="ano_publicacao" placeholder="Ano">
         <br><br>
 
         <button type="submit">Cadastrar</button>
@@ -36,25 +32,17 @@
 
     <hr>
 
-    <h2>Lista de Livros</h2>
+    <h2>Livros cadastrados</h2>
 
-    @if($livros->count() > 0)
-
-        <ul>
-            @foreach($livros as $livro)
-                <li>
-                    {{ $livro->titulo }} -
-                    {{ $livro->autor }} -
-                    {{ $livro->ano_publicacao }}
-                </li>
-            @endforeach
-        </ul>
-
-    @else
-
+    @forelse($livros as $livro)
+        <p>
+            {{ $livro->titulo }} -
+            {{ $livro->autor }} -
+            {{ $livro->ano_publicacao }}
+        </p>
+    @empty
         <p>Nenhum livro cadastrado.</p>
-
-    @endif
+    @endforelse
 
 </body>
 </html>
