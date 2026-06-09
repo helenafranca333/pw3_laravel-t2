@@ -11,7 +11,7 @@ class LivroController extends Controller
     {
         $livros = Livro::all();
 
-        return view('livros.php', compact('livros'));
+        return view('livros.livros', compact('livros'));
     }
 
     public function store(Request $request)
@@ -19,7 +19,7 @@ class LivroController extends Controller
         $request->validate([
             'titulo' => 'required|min:3',
             'autor' => 'required|min:3',
-            'ano_publicacao' => 'required|integer|min:1|max:' . date('Y')
+            'ano_publicacao' =>'required|integer|min:0' . date('Y')
         ]);
 
         Livro::create([
