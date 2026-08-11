@@ -7,3 +7,4 @@ Route::get('/', function () {
 });
 Route::get('/produtos',[ProdutoController::class , 'index']);
 Route::post('/produtos',[ProdutoController::class , 'store']);
+Route::View('/landing','landing');
